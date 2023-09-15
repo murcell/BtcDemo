@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcDemo.Service", "BtcDemo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcDemo.API", "BtcDemo.API\BtcDemo.API.csproj", "{B5BE0E88-1399-4D55-B31A-B49C73831CC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcDemo.Client", "BtcDemo.Client\BtcDemo.Client.csproj", "{87F72C2B-DA43-4348-A3DE-A444D711A45F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B5BE0E88-1399-4D55-B31A-B49C73831CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5BE0E88-1399-4D55-B31A-B49C73831CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5BE0E88-1399-4D55-B31A-B49C73831CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87F72C2B-DA43-4348-A3DE-A444D711A45F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F72C2B-DA43-4348-A3DE-A444D711A45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F72C2B-DA43-4348-A3DE-A444D711A45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F72C2B-DA43-4348-A3DE-A444D711A45F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

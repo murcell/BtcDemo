@@ -23,6 +23,7 @@ namespace BtcDemo.Core.Entities.Base
         public Entity()
 		{
 			Id = default;
+			CreatedDate=DateTime.Now;
 
 		}
 

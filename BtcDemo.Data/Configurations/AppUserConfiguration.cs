@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using BtcDemo.Core.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BtcDemo.Core.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BtcDemo.Data.Configurations
 {
@@ -19,7 +14,7 @@ namespace BtcDemo.Data.Configurations
 			{
 				Id = Guid.NewGuid().ToString(),
 				UserName = "coin@appcoin.com",
-				NormalizedUserName = "TELLER@ODEMEMERKEZI.COM",
+				NormalizedUserName = "COIN@APPCOIN.COM",
 				Email = "coin@appcoin.com",
 				NormalizedEmail = "COIN@APPCOIN.COM",
 				PhoneNumber = "+909999999999",

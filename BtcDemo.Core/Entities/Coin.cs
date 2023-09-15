@@ -1,6 +1,8 @@
-﻿namespace BtcDemo.Core.Entities
+﻿using BtcDemo.Core.Entities.Base;
+
+namespace BtcDemo.Core.Entities
 {
-	public class CryptoCurrency
+	public class Coin : Entity<long>
 	{
         // "id": "90",
         // "symbol": "BTC",
@@ -19,7 +21,6 @@
         // "tsupply": "19470946",
         // "msupply": "21000000"
 
-        public long Id { get; set; }
         public string Symbol { get; set; }
         public string Name { get; set; }
         public int Rank { get; set; }

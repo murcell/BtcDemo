@@ -2,6 +2,6 @@
 
 namespace BtcDemo.Core.Entities;
 
-public class Role:IdentityRole
+public class AppRole:IdentityRole
 {
 }

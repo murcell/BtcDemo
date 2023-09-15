@@ -1,10 +1,8 @@
 ﻿namespace BtcDemo.Core.DTOs;
 
-public class CreateUserDto
+public class AppUserDto
 {
+	public string Id { get; set; }
 	public string UserName { get; set; }
 	public string Email { get; set; }
-	public string Password { get; set; }
-	public long CitizenNumber { get; set; }
-
 }

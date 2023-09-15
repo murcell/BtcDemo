@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BtcDemo.Core.Repositories
 {
-	public interface ICryptoCurrencyRepository : IRepository<CryptoCurrency>
+	public interface ICoinRepository : IRepository<Coin>
 	{
 	}
 }

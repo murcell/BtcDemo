@@ -5,5 +5,5 @@ namespace BtcDemo.Core.Services;
 
 public interface ITokenService
 {
-	TokenDto CreateToken(User user);
+	TokenDto CreateToken(AppUser user);
 }

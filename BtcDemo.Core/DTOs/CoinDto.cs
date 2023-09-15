@@ -1,7 +1,8 @@
 ﻿namespace BtcDemo.Core.DTOs;
 
-public class AddCryptoCurrencyDto
+public class CoinDto
 {
+	public long Id { get; set; }
 	public string Symbol { get; set; }
 	public string Name { get; set; }
 	public int Rank { get; set; }

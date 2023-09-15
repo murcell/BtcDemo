@@ -1,6 +1,8 @@
-﻿namespace BtcDemo.Core.Entities;
+﻿using BtcDemo.Core.Entities.Base;
 
-public class UserRefreshToken
+namespace BtcDemo.Core.Entities;
+
+public class UserRefreshToken:Entity<long>
 {
 	public string UserId { get; set; }
 	public string Code { get; set; }

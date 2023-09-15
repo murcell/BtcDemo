@@ -5,7 +5,8 @@ namespace BtcDemo.Core.Services;
 
 public interface IUserService
 {
-	Task<IDataResult<UserDto>> CreateUserAsync(CreateUserDto createUserDto);
-	Task<IDataResult<UserDto>> GetUserByEmail(string email);
-	Task<IDataResult<UserDto>> GetUserByName(string userName);
+	Task<IDataResult<AppUserDto>> CreateUserAsync(CreateAppUserDto createUserDto);
+	Task<IDataResult<AppUserDto>> GetUserByEmail(string email);
+	Task<IDataResult<AppUserDto>> GetUserByName(string userName);
+	Task<IDataResult<IList<AppUserDto>>> GetAllUsers();
 }

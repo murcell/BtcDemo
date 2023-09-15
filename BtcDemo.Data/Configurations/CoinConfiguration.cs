@@ -17,8 +17,8 @@ namespace BtcDemo.Data.Configurations
 			builder.ToTable("Coins").HasKey(b => b.Id);
 			builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
 			builder.Property(b => b.Name).HasColumnName("Name").IsRequired();
-			builder.Property(b => b.Symbol).HasColumnName("Name").IsRequired();
-			builder.Property(b => b.Name).HasColumnName("Rank").IsRequired();
+			builder.Property(b => b.Symbol).HasColumnName("Symbol").IsRequired();
+			builder.Property(b => b.Rank).HasColumnName("Rank").IsRequired();
 			builder.Property(x => x.PriceUsd).IsRequired().HasColumnType("decimal(18,2)");
 			builder.Property(x => x.PercentChange24h).IsRequired().HasColumnType("decimal(18,2)");
 			builder.Property(x => x.PercentChange1h).IsRequired().HasColumnType("decimal(18,2)");

@@ -16,9 +16,11 @@ namespace BtcDemo.Core.Entities.Base
 
 		public DateTime? DeletedDate { get; set; }
 
-		// farklı kullanımlar için constructor
-		// bunları yapmak zorunda değiliz
-		public Entity()
+        public bool IsDeleted { get; set; }
+
+        // farklı kullanımlar için constructor
+        // bunları yapmak zorunda değiliz
+        public Entity()
 		{
 			Id = default;
 

@@ -18,7 +18,7 @@ public class UnitOfWork : IUnitOfWork
 	}
 
 	
-	public ICoinRepository Invoices => _coin ?? new CoinRepository(_context);
+	public ICoinRepository Coins => _coin ?? new CoinRepository(_context);
 
 	public IUserRefreshTokenRepository UserRefreshTokens => _userRefreshTokenRepository ?? new UserRefreshTokenRepository(_context);
 

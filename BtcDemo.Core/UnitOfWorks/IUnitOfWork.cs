@@ -4,7 +4,7 @@ namespace BtcDemo.Core.UnitOfWorks;
 
 public interface IUnitOfWork
 {
-	ICoinRepository Invoices { get; }
+	ICoinRepository Coins { get; }
 	IUserRefreshTokenRepository UserRefreshTokens { get; }
 	Task<int> CommitAsync();
 

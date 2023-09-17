@@ -7,20 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BtcDemo.API.Controllers
 {
-	//[Authorize]
+	[Authorize]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class CoinsController : ControllerBase
 	{
 		private readonly ICoinService _coinService;
-		private readonly CoinloreNetApiService _coinloreNetApiService;
 		IMapper _mapper;
 
-		public CoinsController(ICoinService coinService, IMapper mapper, CoinloreNetApiService coinloreNetApiService)
+		public CoinsController(ICoinService coinService, IMapper mapper)
 		{
 			_coinService = coinService;
 			_mapper = mapper;
-			_coinloreNetApiService = coinloreNetApiService;
+	
 		}
 
 		//[Authorize(Roles = "Viewer")]
@@ -33,8 +32,7 @@ namespace BtcDemo.API.Controllers
 		[HttpGet("getAllCoins2")]
 		public async Task<IActionResult> GetCoins2()
 		{
-			var test = await _coinloreNetApiService.GetBitcoinAsync();
-
+			
 			return Ok(await _coinService.GetManyAsync(x => x.IsDeleted == false));
 		}
 
@@ -45,8 +43,14 @@ namespace BtcDemo.API.Controllers
 			return Ok(await _coinService.GetManyAsync(x => x.IsDeleted == false && x.CreatedDate>DateTime.Now.AddHours(-1)));
 		}
 
-		//[Authorize(Roles = "Viewer")]
-		[HttpGet("getCoinsByLastFiveHours")]
+        [HttpGet("getCoinsByLastThreeHours")]
+        public async Task<IActionResult> GetCoinsByLastThreeHours()
+        {
+            return Ok(await _coinService.GetManyAsync(x => x.IsDeleted == false && x.CreatedDate > DateTime.Now.AddHours(-3)));
+        }
+
+        //[Authorize(Roles = "Viewer")]
+        [HttpGet("getCoinsByLastFiveHours")]
 		public async Task<IActionResult> GetCoinsByLastFiveHours()
 		{
 			return Ok(await _coinService.GetManyAsync(x => x.IsDeleted == false && x.CreatedDate > DateTime.Now.AddHours(-5)));
@@ -65,5 +69,11 @@ namespace BtcDemo.API.Controllers
 		{
 			return Ok(await _coinService.GetManyAsync(x => x.IsDeleted == false && x.CreatedDate > DateTime.Now.AddMonths(-1)));
 		}
-	}
+
+        [HttpGet("getCoinsByLastFourHours/{dayFilter}")]
+        public async Task<IActionResult> GetCoinsByLastFourHours(int dayFilter)
+        {
+            return Ok(await _coinService.GetManyAsync(x => x.IsDeleted == false && x.CreatedDate > DateTime.Now.AddHours(-5)));
+        }
+    }
 }

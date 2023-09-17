@@ -1,0 +1,124 @@
+﻿@{
+    ViewData["Title"] = "Chart";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12">
+
+    <h3 style="text-align: center;">Btc Line Chart</h3>
+
+    <div id="chartWrapper" style="display:block" class="row">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <div class="row mt-10" style="text-align: center; margin-top:35px">
+
+        <div>
+            <button id="btnChart" data-url="0" class="btn btn-success btnChart"><span class="fas fa-user-edit"></span> Get All</button> &nbsp;
+            <button id="btnChartLastOneHour" data-url="1" class="btn btn-success btnChart"><span class="fas fa-user-edit"></span> Last One Hour</button> &nbsp;
+            <button id="btnChartLastThreeHours" data-url="5" class="btn btn-success btnChart"><span class="fas fa-user-edit"></span> Last Three Hours</button> &nbsp;
+            <button id="btnChartLastFiveHours" data-url="2" class="btn btn-success btnChart"><span class="fas fa-user-edit"></span> Last Five Hours</button> &nbsp;
+            <button id="btnChartLastSevenDays" data-url="3" class="btn btn-success btnChart"><span class="fas fa-user-edit"></span> Last Seve nDays</button> &nbsp;
+            <button id="btnChartLastMonth" data-url="4" class="btn btn-success btnChart"><span class="fas fa-user-edit"></span> Last Month</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@section Scripts
+{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            
+            var filterDataDocReady = {};
+            filterDataDocReady.Filter = 1;
+
+            $.post("@Url.Action("ChartData","Btc")", { filterModel: filterDataDocReady }, function (data) {
+                var _data = data;
+                var _chartLabels = data[0];
+                var _chartData = data[1];
+                var _labelData = data[2];
+
+                var wrapper = document.getElementById('chartWrapper');
+
+                wrapper.innerHTML = '&nbsp';
+                $('#chartWrapper').append('<canvas id="myChart" style="width:800px; height:400px"></canvas>');
+
+                new Chart('myChart', {
+                    type: 'line',
+                    data: {
+                        labels: _chartLabels,
+                        datasets: [{
+                            label: _labelData,
+                            data: _chartData,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: false
+                            }
+                        }
+                    }
+                });
+            });
+
+
+            $(".btnChart").click(function () {
+
+                let filterTest = $(this).attr("data-url");
+                var filterData = {  };
+                filterData.Filter = filterTest;
+
+                $.post("@Url.Action("ChartData","Btc")", { filterModel: filterData }, function (data) {
+                    var _data = data;
+                    var _chartLabels = data[0];
+                    var _chartData = data[1];
+                    var _labelData = data[2];
+                   
+                    var wrapper = document.getElementById('chartWrapper');
+
+                    wrapper.innerHTML = '&nbsp';
+                    $('#chartWrapper').append('<canvas id="myChart" style="width:800px; height:400px"></canvas>');
+
+                    new Chart('myChart', {
+                        type: 'line',
+                        data: {
+                            labels: _chartLabels,
+                            datasets: [{
+                                label: _labelData,
+                                data: _chartData,
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: false
+                                }
+                            }
+                        }
+                    });
+                });
+
+                
+
+            });
+
+        });
+    </script>
+	
+}
+
+
+
+
+

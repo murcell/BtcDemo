@@ -13,4 +13,5 @@ public class CoinDto
 	public decimal CSupply { get; set; }
 	public decimal TSupply { get; set; }
 	public decimal MSupply { get; set; }
+    public DateTime CreatedDate { get; set; }
 }

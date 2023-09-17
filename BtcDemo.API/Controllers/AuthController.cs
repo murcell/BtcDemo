@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BtcDemo.API.Controllers
 {
-	[Route("api/[controller]/[action]")]
+	[Route("api/[controller]")]
 	[ApiController]
 	public class AuthController : ControllerBase
 	{

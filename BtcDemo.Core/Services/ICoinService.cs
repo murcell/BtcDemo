@@ -14,5 +14,6 @@ namespace BtcDemo.Core.Services
 		//Task<IResult> DeleteAsync(long CoinId);
 		Task<IDataResult<IEnumerable<CoinDto>>> GetAllAsync();
 		Task<IDataResult<IEnumerable<CoinDto>>> GetManyAsync(Expression<Func<Coin, bool>> predicate);
+		Task<bool> AnyAsync(Expression<Func<Coin, bool>> predicate);
 	}
 }

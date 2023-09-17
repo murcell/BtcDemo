@@ -1,5 +1,5 @@
 ﻿namespace BtcDemo.Client.Services;
 
-public class AppUserApiService
+public class AppUserApiService: IAppUserApiService
 {
 }

@@ -26,7 +26,7 @@ public class CoinloreBackgroundService : BackgroundService
 	{
 		while (!stoppingToken.IsCancellationRequested) {
 			await DoWork(stoppingToken);
-			await Task.Delay(45000, stoppingToken);
+			await Task.Delay(60000, stoppingToken);
 		}
 	}
 

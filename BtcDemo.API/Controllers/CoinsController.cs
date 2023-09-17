@@ -23,17 +23,9 @@ namespace BtcDemo.API.Controllers
 	
 		}
 
-		//[Authorize(Roles = "Viewer")]
 		[HttpGet("getAllCoins")]
 		public async Task<IActionResult> GetCoins()
 		{
-			return Ok(await _coinService.GetManyAsync(x => x.IsDeleted == false));
-		}
-
-		[HttpGet("getAllCoins2")]
-		public async Task<IActionResult> GetCoins2()
-		{
-			
 			return Ok(await _coinService.GetManyAsync(x => x.IsDeleted == false));
 		}
 

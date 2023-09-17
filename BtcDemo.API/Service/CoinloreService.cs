@@ -3,6 +3,7 @@ using BtcDemo.API.Service.Model;
 using BtcDemo.Core.DTOs;
 using BtcDemo.Core.Services;
 using BtcDemo.Core.UnitOfWorks;
+using BtcDemo.Service.Services;
 
 namespace BtcDemo.API.Service;
 
@@ -17,14 +18,12 @@ public class CoinloreService : ICoinloreService
 	//	_httpClientFactory = httpClientFactory;
 	//}
 
-	private readonly IUnitOfWork _unitOfWork;
 	private readonly ICoinService _coinService;
 	private readonly HttpClient _httpClient;
 	private IMapper _mapper;
 
-	public CoinloreService(IUnitOfWork unitOfWork, ICoinService coinService, HttpClient httpClient, IMapper mapper)
+	public CoinloreService(ICoinService coinService, HttpClient httpClient, IMapper mapper)
 	{
-		_unitOfWork = unitOfWork;
 		_coinService = coinService;
 		_httpClient = httpClient;
 		_mapper = mapper;
@@ -38,18 +37,16 @@ public class CoinloreService : ICoinloreService
 		{
 			var coin = _mapper.Map<AddCoinDto>(response.FirstOrDefault());
 
-			// todo: ekleme yapmadan önce son eklenen bitcoinin değerini alıp gelen değerle
+			// Burada 1 dakika içinde coin değerleri değişmiyordu
+			// ben de değer değişiyorsa ekleme yaptırdım fyi..
+			// ekleme yapmadan önce son eklenen bitcoinin değerini alıp gelen değerle
 			// karşılaştırıp aynı ise ekletme
 
-			await AddAsync(coin);
+			if(!await _coinService.AnyAsync(c => c.PriceUsd == coin.PriceUsd))
+				await _coinService.AddAsync(coin);
 		}
 
 		return response ?? new List<CoinloreDto>();
 	}
-
-	private async Task AddAsync(AddCoinDto coin)
-	{
-		await _coinService.AddAsync(coin);
-	}
-
+	
 }

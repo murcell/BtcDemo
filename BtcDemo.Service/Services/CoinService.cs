@@ -34,6 +34,14 @@ public class CoinService : ServiceBase, ICoinService
 		return new Result(ResultStatus.Success, Messages.CoinMessage.Add());
 	}
 
+	public async Task<bool> AnyAsync(Expression<Func<Coin, bool>> predicate)
+	{
+		var IsHasCoin = await UnitOfWork.Coins.AnyAsync(predicate);
+		if (IsHasCoin)
+			return true;
+		return false;
+	}
+
 	public async Task<IResult> DeleteAsync(long id)
 	{
 		var result = await UnitOfWork.Coins.AnyAsync(a => a.Id == id);
@@ -89,7 +97,7 @@ public class CoinService : ServiceBase, ICoinService
 			return new DataResult<IList<CoinDto>>(ResultStatus.Warning, "Bulunamadı", null);
 		}
 
-		return new DataResult<IList<CoinDto>>(ResultStatus.Success, Mapper.Map<IList<CoinDto>>(Coins));
+		return new DataResult<IList<CoinDto>>(ResultStatus.Success, Mapper.Map<IList<CoinDto>>(Coins.OrderByDescending(c=>c.CreatedDate)));
 	}
 
 

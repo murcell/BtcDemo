@@ -14,24 +14,12 @@ namespace BtcDemo.Client.Controllers;
 
 public class AccountController : Controller
 {
-    //private readonly AuthApiService _authApiService;
-    //private readonly IHttpClientFactory _httpClientFactory;
-
-    //public AccountController(AuthApiService authApiService, IHttpClientFactory httpClientFactory)
-    //{
-    //    _authApiService = authApiService;
-    //    _httpClientFactory = httpClientFactory;
-    //}
-
-   
     private readonly IHttpClientFactory _httpClientFactory;
 
     public AccountController(IHttpClientFactory httpClientFactory)
     {
-        
         _httpClientFactory = httpClientFactory;
     }
-
 
     public IActionResult Login()
     {
@@ -82,6 +70,52 @@ public class AccountController : Controller
         return View(model);
     }
 
+    public IActionResult Register()
+    {
+        return View(new UserRegisterModel());
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Register(UserRegisterModel model)
+    {
+        // Kullanıcı registeri api servsinden yaptım. 
+        // Identity servislerini api içinde kullandım
+        if (ModelState.IsValid)
+        {
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri("https://localhost:7063/api/");
+            var content = new StringContent(JsonSerializer.Serialize(model), encoding: System.Text.Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("users/createUser", content);
+            if (response.IsSuccessStatusCode)
+            {
+
+                /*
+                 string confirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    string link = Url.Action("ConfirmEmail", "Home", new
+                    {
+                        userId = user.Id,
+                        token = confirmationToken
+                    }, protocol: HttpContext.Request.Scheme);
+
+                    EmailConfirmation.SendEmail(link, user.Email);
+
+                    return RedirectToAction("Login");
+                 
+                 */
+
+                //var jsonData = await response.Content.ReadAsStringAsync();
+                //Todo: EmailConfirmation yapısı kurululacak. bunun için İdentity user manager sınıflarını mvc tarafında kullanmak üzerine bir yapı kurulması gerek. Hepsi bir arada bulunsun diye api projesinde yaptım bu işlemleri.
+                
+                return RedirectToAction("Login", "Account");
+
+                }
+            }
+        else
+        {
+            ModelState.AddModelError("", "Bir hata oluştu.");
+        }
+        return View(model);
+    }
 
     [HttpGet]
     [Authorize]
@@ -89,16 +123,6 @@ public class AccountController : Controller
     {
         await HttpContext.SignOutAsync();
         return RedirectToAction("Index","Home");
-    }
-
-
-
-        [HttpPost]
-    public async Task<IActionResult> Login1(UserLoginModel model)
-    {
-        //var result = await _authApiService.Login(model);
-
-        return View(model);
     }
 
 }

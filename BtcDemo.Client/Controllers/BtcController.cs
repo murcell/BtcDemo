@@ -60,6 +60,7 @@ namespace BtcDemo.Client.Controllers
                 {
                     case 0:
                         label = "All BTC Values";
+                        actionUrl = "coins/getAllCoins";
                         break;
                     case 1:
                         label = "BTC Values of Last One Hour";

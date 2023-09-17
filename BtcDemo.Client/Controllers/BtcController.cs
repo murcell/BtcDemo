@@ -50,7 +50,7 @@ namespace BtcDemo.Client.Controllers
             var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
             if (token != null)
             {
-                string actionUrl= string.Empty;
+                string actionUrl= actionUrl = $"coins/getCoinsByFilter/{filterModel.Filter}"; ;
                 var label = string.Empty;
                 var client = _httpClientFactory.CreateClient();
                 client.BaseAddress = new Uri("https://localhost:7063/api/");
@@ -59,32 +59,24 @@ namespace BtcDemo.Client.Controllers
                 switch (filterModel.Filter)
                 {
                     case 0:
-                        actionUrl = "coins/getAllCoins";
                         label = "All BTC Values";
                         break;
                     case 1:
-                        actionUrl = "coins/getCoinsByLastOneHour";
                         label = "BTC Values of Last One Hour";
                         break;
-                    case 2:
-                        actionUrl = "coins/getCoinsByLastFiveHours";
+                    case 3:
+                        label = "BTC Values of Last Three Hours";
+                        break;
+                    case 5:
                         label = "BTC Values of Last Five Hours";
                         break;
-                    case 3:
-                        actionUrl = "coins/getCoinsByLastSevenDays";
-                        label = "BTC Values of Last Seven Hours";
-                        break;
-                    case 4:
+                    case 30:
                         actionUrl = "coins/getCoinsByLastOneMonth";
                         label = "BTC Values of Last One Month";
                         break;
-                    case 5:
-                        actionUrl = "coins/getCoinsByLastThreeHours";
-                        label = "BTC Values of Last Three Hours";
-                        break;
-                    case 6:
-                        actionUrl = $"coins/getCoinsByLastFourHours/{6}";
-                        label = "BTC Values of Last Four Hours";
+                    case 7:
+                        label = "BTC Values of Last Seven Days";
+                        actionUrl = "coins/getCoinsByLastSevenDays";
                         break;
                     default:
                         actionUrl = "coins/getAllCoins";
@@ -103,7 +95,7 @@ namespace BtcDemo.Client.Controllers
                     {
                         data.Add(coinList.Data.Select(c=>c.CreatedDate.ToString()).ToList());
                         data.Add(coinList.Data.Select(c=>c.PriceUsd).ToList());
-                        data.Add(new List<string>() { label + "Count : " + coinList.Data.Count.ToString() });
+                        data.Add(new List<string>() { label + " Count : " + coinList.Data.Count.ToString() });
                         return Json(data);
                     }
                 }

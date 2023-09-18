@@ -1,6 +1,5 @@
 using AutoMapper;
 using BtcDemo.Client.ProfileMap;
-using BtcDemo.Client.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);

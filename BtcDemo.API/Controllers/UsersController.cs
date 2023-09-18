@@ -1,12 +1,10 @@
 ﻿using BtcDemo.Core.DTOs;
 using BtcDemo.Core.Services;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BtcDemo.API.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class UsersController : ControllerBase
 	{

@@ -1,12 +1,9 @@
 ﻿using BtcDemo.Client.Models;
-using BtcDemo.Client.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http;
 using System.Security.Claims;
 using System.Text.Json;
 
@@ -32,7 +29,7 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("https://localhost:7063/api/");
+            client.BaseAddress = new Uri("http://localhost:5151/api/");
             var content = new StringContent(JsonSerializer.Serialize(model), encoding: System.Text.Encoding.UTF8, "application/json");
             var response = await client.PostAsync("auth/login", content);
             if (response.IsSuccessStatusCode)
@@ -83,7 +80,7 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("https://localhost:7063/api/");
+            client.BaseAddress = new Uri("http://localhost:5151/api/");
             var content = new StringContent(JsonSerializer.Serialize(model), encoding: System.Text.Encoding.UTF8, "application/json");
             var response = await client.PostAsync("users/createUser", content);
             if (response.IsSuccessStatusCode)

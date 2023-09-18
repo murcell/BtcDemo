@@ -118,7 +118,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
 	// Help dökümaný açýklamasýný görmek için 
-	c.IncludeXmlComments(System.AppDomain.CurrentDomain.BaseDirectory + "\\BtcDemo.API.xml");
+	//c.IncludeXmlComments(System.AppDomain.CurrentDomain.BaseDirectory + "\\BtcDemo.API.xml");
 
 	c.SwaggerDoc("v1", new OpenApiInfo { Title = "BtcDemo.API", Version = "v1" });
 	c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

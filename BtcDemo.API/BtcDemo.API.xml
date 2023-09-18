@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BtcDemo.API</name>
+    </assembly>
+    <members>
+        <member name="M:BtcDemo.API.Controllers.UsersController.CreateUser(BtcDemo.Core.DTOs.CreateAppUserDto)">
+            <summary>
+            Şu an dışarıya açık kullanıcı oluşturma metodu
+            </summary>
+            <param name="createUserDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BtcDemo.API.Controllers.UsersController.GetUser">
+            <summary>
+            Sadece login olan kullanıcı kendi bilgilerini görür.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BtcDemo.API.Controllers.UsersController.GetAllUser">
+            <summary>
+            sadece admin görebilir.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BtcDemo.API.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:BtcDemo.API.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:BtcDemo.API.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

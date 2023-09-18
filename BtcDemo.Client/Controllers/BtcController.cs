@@ -21,7 +21,7 @@ namespace BtcDemo.Client.Controllers
             if (token != null)
             {
                 var client = _httpClientFactory.CreateClient();
-                client.BaseAddress = new Uri("https://localhost:7063/api/");
+                client.BaseAddress = new Uri("http://localhost:5151/api/");
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                 var response = await client.GetAsync("coins/getAllCoins");
 
@@ -53,7 +53,7 @@ namespace BtcDemo.Client.Controllers
                 string actionUrl= actionUrl = $"coins/getCoinsByFilter/{filterModel.Filter}"; ;
                 var label = string.Empty;
                 var client = _httpClientFactory.CreateClient();
-                client.BaseAddress = new Uri("https://localhost:7063/api/");
+                client.BaseAddress = new Uri("http://localhost:5151/api/");
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
                 switch (filterModel.Filter)

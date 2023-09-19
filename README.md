@@ -19,11 +19,12 @@ asp .net core mvc and aspnet
 
 Btc Demo uses a number of open source projects to work properly:
 
-- [AngularJS] - HTML enhanced for web apps!
+- [AspNet Core] - .Net core
+- [HTML] - HTML enhanced for web apps!
 - [chart.js] - Chart js
-- [markdown-it] - Markdown parser done right. Fast and easy to extend.
 - [Bootstrap] - great UI boilerplate for modern web apps
-- [jQuery] - duh
+- [jQuery] - used fron side
+  
 
 ## Installation
 

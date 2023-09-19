@@ -27,7 +27,7 @@ Btc Demo uses a number of open source projects to work properly:
 
 ## Installation
 
-you can run the app docker via compose up
+you can run the app via docker compose up
 
 ## Docker
 

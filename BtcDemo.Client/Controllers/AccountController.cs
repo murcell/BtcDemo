@@ -29,7 +29,7 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("http://localhost:5151/api/");
+            client.BaseAddress = new Uri("http://btcdemo.api:80/api/");
             var content = new StringContent(JsonSerializer.Serialize(model), encoding: System.Text.Encoding.UTF8, "application/json");
             var response = await client.PostAsync("auth/login", content);
             if (response.IsSuccessStatusCode)
@@ -80,7 +80,7 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("http://localhost:5151/api/");
+            client.BaseAddress = new Uri("http://btcdemo.api:80/api/");
             var content = new StringContent(JsonSerializer.Serialize(model), encoding: System.Text.Encoding.UTF8, "application/json");
             var response = await client.PostAsync("users/createUser", content);
             if (response.IsSuccessStatusCode)

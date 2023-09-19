@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  btcdemo.api:
+    image: api-image
+    container_name: api-container
+    build:
+      context: .
+      dockerfile: BtcDemo.API/Dockerfile
+  btcdemo.client:
+    image: client-image
+    container_name: mvc-container
+    build:
+      context: .
+      dockerfile: BtcDemo.Client/Dockerfile

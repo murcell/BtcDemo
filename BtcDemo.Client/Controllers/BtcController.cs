@@ -9,21 +9,23 @@ namespace BtcDemo.Client.Controllers
     public class BtcController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IConfiguration _configuration;
 
-        public BtcController(IHttpClientFactory httpClientFactory)
+        public BtcController(IHttpClientFactory httpClientFactory, IConfiguration configuration)
         {
             _httpClientFactory = httpClientFactory;
+            _configuration = configuration;
         }
-       
+
         public async Task<IActionResult> List()
         {
             var token = User.Claims.FirstOrDefault(x=>x.Type== "accessToken")?.Value;
             if (token != null)
             {
                 var client = _httpClientFactory.CreateClient();
-                client.BaseAddress = new Uri("http://btcdemo.api:80/api/");
+                client.BaseAddress = new Uri(_configuration.GetSection("Services")["BaseUrl"]);
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var response = await client.GetAsync("coins/getAllCoins");
+                var response = await client.GetAsync("api/coins/getAllCoins");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -50,17 +52,17 @@ namespace BtcDemo.Client.Controllers
             var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
             if (token != null)
             {
-                string actionUrl = $"coins/getCoinsByFilter/{filterModel.Filter}"; ;
+                string actionUrl = $"api/coins/getCoinsByFilter/{filterModel.Filter}"; ;
                 var label = string.Empty;
                 var client = _httpClientFactory.CreateClient();
-                client.BaseAddress = new Uri("http://btcdemo.api:80/api/");
+                client.BaseAddress = new Uri(_configuration.GetSection("Services")["BaseUrl"]);
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
                 switch (filterModel.Filter)
                 {
                     case 0:
                         label = "All BTC Values";
-                        actionUrl = "coins/getAllCoins";
+                        actionUrl = "api/coins/getAllCoins";
                         break;
                     case 1:
                         label = "BTC Values of Last One Hour";
@@ -72,15 +74,15 @@ namespace BtcDemo.Client.Controllers
                         label = "BTC Values of Last Five Hours";
                         break;
                     case 30:
-                        actionUrl = "coins/getCoinsByLastOneMonth";
+                        actionUrl = "api/coins/getCoinsByLastOneMonth";
                         label = "BTC Values of Last One Month";
                         break;
                     case 7:
                         label = "BTC Values of Last Seven Days";
-                        actionUrl = "coins/getCoinsByLastSevenDays";
+                        actionUrl = "api/coins/getCoinsByLastSevenDays";
                         break;
                     default:
-                        actionUrl = "coins/getAllCoins";
+                        actionUrl = "api/coins/getAllCoins";
                         break;
                 }
 

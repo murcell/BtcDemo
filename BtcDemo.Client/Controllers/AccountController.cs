@@ -12,10 +12,12 @@ namespace BtcDemo.Client.Controllers;
 public class AccountController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IConfiguration _configuration;
 
-    public AccountController(IHttpClientFactory httpClientFactory)
+    public AccountController(IHttpClientFactory httpClientFactory, IConfiguration configuration)
     {
         _httpClientFactory = httpClientFactory;
+        _configuration = configuration;
     }
 
     public IActionResult Login()
@@ -29,9 +31,10 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("http://btcdemo.api:80/api/");
+
+            client.BaseAddress = new Uri(_configuration.GetSection("Services")["BaseUrl"]);
             var content = new StringContent(JsonSerializer.Serialize(model), encoding: System.Text.Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("auth/login", content);
+            var response = await client.PostAsync("api/auth/login", content);
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
@@ -80,9 +83,9 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("http://btcdemo.api:80/api/");
+            client.BaseAddress = new Uri(_configuration.GetSection("Services")["BaseUrl"]);
             var content = new StringContent(JsonSerializer.Serialize(model), encoding: System.Text.Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("users/createUser", content);
+            var response = await client.PostAsync("api/users/createUser", content);
             if (response.IsSuccessStatusCode)
             {
 

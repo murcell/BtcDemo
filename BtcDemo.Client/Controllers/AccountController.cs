@@ -54,7 +54,7 @@ public class AccountController : Controller
                         ExpiresUtc = tokenModel.Data.AccessTokenExpiration,
                         IsPersistent = true
                     };
-
+                    // burası için mock yapamadım, çok zaman kaybettim.
                     await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
 
                     return RedirectToAction("Chart","Btc");

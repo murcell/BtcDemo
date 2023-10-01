@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
-using BtcDemo.API.Service;
 using BtcDemo.Core.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq.Expressions;
 
 namespace BtcDemo.API.Controllers
 {
-	[Authorize]
+    [Authorize]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class CoinsController : ControllerBase
@@ -36,7 +33,7 @@ namespace BtcDemo.API.Controllers
         }
 
         [HttpGet("getCoinsByLastOneMonth")]
-        public async Task<IActionResult> getCoinsByLastOneMonth()
+        public async Task<IActionResult> GetCoinsByLastOneMonth()
         {
             return Ok(await _coinService.GetManyAsync(x => x.IsDeleted == false && x.CreatedDate > DateTime.Now.AddMonths(-1)));
         }

@@ -20,9 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{37176466-8C17-4DC1-8B55-4859FBCC0760}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcDemo.ClientTest", "..\BtcDemo.ClientTest\BtcDemo.ClientTest.csproj", "{1B744F1F-6CC8-4969-A7D8-636D4D03A6CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcDemo.ClientTest", "BtcDemo.ClientTest\BtcDemo.ClientTest.csproj", "{1B744F1F-6CC8-4969-A7D8-636D4D03A6CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcDemo.ApiTest", "..\BtcDemo.ApiTest\BtcDemo.ApiTest.csproj", "{9A6975A5-0265-47A3-BD2D-C8E9429B5459}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BtcDemo.ApiTest", "BtcDemo.ApiTest\BtcDemo.ApiTest.csproj", "{9A6975A5-0265-47A3-BD2D-C8E9429B5459}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

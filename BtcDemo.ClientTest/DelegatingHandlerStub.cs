@@ -1,18 +1,4 @@
-﻿using BtcDemo.Client.Controllers;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System.Net;
-using System.Net.Http.Headers;
-using System.Reflection;
-using System.Security.Claims;
-using System.Text.Encodings.Web;
-using static BtcDemo.ClientTest.AccounControllerTest;
+﻿using System.Net;
 
 namespace BtcDemo.ClientTest
 {

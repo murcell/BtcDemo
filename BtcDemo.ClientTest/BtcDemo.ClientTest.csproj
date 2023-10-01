@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BtcDemo\BtcDemo.Client\BtcDemo.Client.csproj" />
+    <ProjectReference Include="..\BtcDemo.Client\BtcDemo.Client.csproj" />
   </ItemGroup>
 
 </Project>
